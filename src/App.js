@@ -1,42 +1,40 @@
 import React, { Component } from 'react';
-
-import { CardList } from './components/card-list/card-list.component';
-import { SearchBox } from './components/search-box/search-box.component';
+import { Route, Link, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import './App.css';
+import { Homepage } from './pages/Homepage';
+import  {InfoPage}  from './pages/InfoPage.jsx';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      monsters: [],
-      searchField: ''
+      dogs: [],
+      
     };
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('https://api.thedogapi.com/v1/breeds')
       .then(response => response.json())
-      .then(users => this.setState({ monsters: users }));
+      .then(dog => this.setState({ dogs: dog }));
   }
 
-  onSearchChange = event => {
-    this.setState({ searchField: event.target.value });
-  };
 
   render() {
-    const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter(monster =>
-      monster.name.toLowerCase().includes(searchField.toLowerCase())
+    const { dogs } = this.state;
+    const allDogs = dogs.filter(dog =>
+      dog.name
     );
-
+    const filteredDogs = allDogs.slice(0,20)
     return (
-      <div className='App'>
-        <h1>Monsters Rolodex</h1>
-        <SearchBox onSearchChange={this.onSearchChange} />
-        <CardList monsters={filteredMonsters} />
-      </div>
+      <Router>
+        <Switch>
+          <Route path = "/" exact component = {()=><Homepage dogs = {filteredDogs}/>} />
+          <Route path = '/infopage' exact component = {InfoPage}/>
+        </Switch>
+      </Router>
     );
   }
 }

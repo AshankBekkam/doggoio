@@ -3,7 +3,21 @@
 }
 
 h1 {
-  font-family: 'Bigelow Rules';
-  font-size: 72px;
+  font-family: 'Playfair Display', serif;
+  font-size: 6vw;
   color: #0ccac4;
+}
+h2{
+  font-family: 'Cabin', sans-serif;
+  font-size: 2vw;
+  color:whitesmoke;
+}
+@media only screen and (max-width: 425px) {
+  h2{
+    font-size: 6vw;
+  }
+  h1{
+    font-size: 20vw;
+  }
+  
 }

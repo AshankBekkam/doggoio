@@ -1,0 +1,60 @@
+.infopage{
+    width: 85vw;
+    margin: 5vw auto;
+    
+}
+.head_container{
+    display: flex;
+    align-items: center;
+}
+.photo{
+    height: auto;
+    width: 30vw;
+    border-radius: 20px;
+    float: left;
+    margin: 20px;
+}
+
+.deets{
+    float: left;
+    margin: 20px;
+}
+.tit{
+    font-size: 3vw;
+}
+
+.head{
+    float: right;
+}
+@media only screen and (max-width: 425px) {
+    .infopage{
+        width: 95vw;
+    }
+    .tit{
+        font-size: 10vw;
+    }
+    .head{
+        font-size: 12vw;
+        float: none;
+
+    }
+    .head_container{
+        display: inline;
+        
+    }
+    .deets{
+        float: none;
+
+    }
+    .photo{
+        width: 90vw;
+        float: none;
+        margin: auto;
+        
+
+    }
+    .head-subt{
+        display: block;
+        margin: 20px;
+    }
+  }
